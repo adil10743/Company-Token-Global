@@ -1,29 +1,25 @@
-# Synpulse Token Global
-This repository contains the smart contract source code for the vested Synpulse Token Global. It uses [Brownie](https://eth-brownie.readthedocs.io/en/stable/index.html) as development framework for compilation, testing and deployment tasks.
+# Company Token Global
+This repository contains the smart contract source code for the vested Company Token Global. It uses [Brownie](https://eth-brownie.readthedocs.io/en/stable/index.html) as development framework for compilation, testing and deployment tasks.
 
-## What is the Synpulse Token?
-The Synpulse token represents an employee benefits program for Synpulse, a global management consulting company, backed by a pool of cryptocurrency based assets. The token is to be evenly distributed by region to Synpulse employees and holders may redeem tokens with Synpulse for monetary or other rewards. Synpulse retains the right to remove these tokens from individuals according to Synpulse policy. 
-
-https://spextranet.sharepoint.com/sites/SynpulseToken
-
-https://synpulse.com/
+## What is the Company Token?
+The Company token represents an employee benefits program for Company, a global management consulting company, backed by a pool of cryptocurrency based assets. The token is to be evenly distributed by region to Company employees and holders may redeem tokens with Company for monetary or other rewards. Company retains the right to remove these tokens from individuals according to Company policy. 
 
 ## Documentation
 
 The token is implemented as a smart contract on top of the Ethereum blockchain. This smart contract gurantees safety and enforces the rules of participation. The token implements both [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) and [ERC777](https://ethereum.org/en/developers/docs/standards/tokens/erc-777/). Note that the ERC777 "hooks" functionality has been removed but the contract preserves the concept of " default operators". The main contract is split into 3 parts for organisational clarity:
 
-- **synRoles**             (Contract control settings and definition of administrational positions that can be held)
-- **synERC777**            (A Synpulse adaptation of the base ERC777 token standard that includes ERC20 functionality)
-- **synpulseTokenGlobal**  (Deployment smart contract and Synpulse specific functions)
+- **coRoles**             (Contract control settings and definition of administrational positions that can be held)
+- **coERC777**            (A Company adaptation of the base ERC777 token standard that includes ERC20 functionality)
+- **CompanyTokenGlobal**  (Deployment smart contract and Company specific functions)
 
 ### Roles
 
 ##### defaultOperators
-Individuals of delegated power. They can burn and mint Synpulse Tokens in the masterContract. They can also make use of operatorSend() to send Synpulse tokens from holder addresses to the masterContract. Note this is defined as part of ERC777.
+Individuals of delegated power. They can burn and mint Company Tokens in the masterContract. They can also make use of operatorSend() to send Company tokens from holder addresses to the masterContract. Note this is defined as part of ERC777.
 
 ##### administrator
 0x965067c63dc2E70A905367E7915966079Ea5785B -
-Set to the CFO, Synpulse. The administrator can pause and unpause the contract, enable and disable whitelisting as well as add and remove defaultOperators. Can send tokens from the masterContract to holders using the sendTokensToIndividualAddress() and sendTokensToMultipleAdddresses().
+Set to the CFO, Company. The administrator can pause and unpause the contract, enable and disable whitelisting as well as add and remove defaultOperators. Can send tokens from the masterContract to holders using the sendTokensToIndividualAddress() and sendTokensToMultipleAdddresses().
 The administrator is added as a defaultOperator on deployment.
 
 ##### masterContract
@@ -42,7 +38,7 @@ A boolean flag controlled by the administrator role which, if not enabled, preve
 
 ### Write Methods
 
-The main interactions for token holders will come via the Synpulse requestPayout() function and ERC style functions send(), transfer(), approve(), transferFrom(). ERC style functions are identical to those found in [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) and [ERC777](https://ethereum.org/en/developers/docs/standards/tokens/erc-777/) documentation but with added contract settings restrictions.
+The main interactions for token holders will come via the Company requestPayout() function and ERC style functions send(), transfer(), approve(), transferFrom(). ERC style functions are identical to those found in [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) and [ERC777](https://ethereum.org/en/developers/docs/standards/tokens/erc-777/) documentation but with added contract settings restrictions.
 Other functions are to be utilised by addresses with assigned roles.
 
 #### User
@@ -50,7 +46,7 @@ Other functions are to be utilised by addresses with assigned roles.
 ##### *requestPayout()*
 `function requestPayout(uint256 amount, bytes memory data)`
 
-Sends a certain `amount` of tokens to the masterContract. The `data` input can be utilised to include the reason for a payout in order to trigger responses from Synpulse.  "0x0" is standard input. Emits a {Payout} event.
+Sends a certain `amount` of tokens to the masterContract. The `data` input can be utilised to include the reason for a payout in order to trigger responses from Company.  "0x0" is standard input. Emits a {Payout} event.
 
 | Parameter Name  | Type          | Description                   |
 | --------------- | ------------- | ----------------------------- |
@@ -248,7 +244,7 @@ This function is called by the masterContract in order to remove the current mas
 
 `event Payout (uint256 date, address indexed from, uint256 amount);`
 
-Event can be consumed by APIs in order to trigger responses by Synpulse eg. emails.
+Event can be consumed by APIs in order to trigger responses by Company eg. emails.
 Date output is emitted as a timestamp and can be converted to a date using python's datetime.date.fromtimestamp()
 
 ### Deployment
