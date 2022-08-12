@@ -1,15 +1,16 @@
 import pytest
 from brownie import network, accounts
-from scripts.deploy import initial_supply, defaultOperators, deploySYNtoken
+from scripts.deploy import initial_supply, defaultOperators, deployCTKtoken
 from scripts.automation_scripts import get_account
 from scripts.contractFunctions import *
 from web3 import Web3
 
 # ganache-cli --fork https://rinkeby.infura.io/v3/9a683af859ec496e9cad16fbd65e61b1
 
+
 @pytest.fixture
 def sc():
-    return deploySYNtoken("VR")
+    return deployCTKtoken("Company")
 
 #Fund accouts
 def test_FundMe():
