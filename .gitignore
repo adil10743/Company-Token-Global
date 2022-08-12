@@ -1,0 +1,15 @@
+__pycache__
+.env
+.history
+.hypothesis/
+build/
+reports/
+artifacts/
+cache/
+node_modules/
+package-lock.json
+hardhat.config.js
+package.json
+.VSCodeCounter/
+
+

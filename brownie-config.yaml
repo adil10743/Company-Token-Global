@@ -1,0 +1,20 @@
+dependencies:
+  - OpenZeppelin/openzeppelin-contracts@4.3.2
+compiler:
+  solc:
+    remappings:
+      - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@4.3.2'
+dotenv: .env
+networks:
+  default: development
+  development:
+    max_fee: 25000000000
+    priority_fee: 7000000000
+    verify: False
+  rinkeby:
+    verify: True
+  kovan: active
+wallets:
+  Company:
+    from_key: 0x...
+  ##testnet private key, a more secure method will be used
