@@ -18,12 +18,12 @@ The token is implemented as a smart contract on top of the Ethereum blockchain. 
 Individuals of delegated power. They can burn and mint Company Tokens in the masterContract. They can also make use of operatorSend() to send Company tokens from holder addresses to the masterContract. Note this is defined as part of ERC777.
 
 ##### administrator
-0x965067c63dc2E70A905367E7915966079Ea5785B -
+0x... -
 Set to the CFO, Company. The administrator can pause and unpause the contract, enable and disable whitelisting as well as add and remove defaultOperators. Can send tokens from the masterContract to holders using the sendTokensToIndividualAddress() and sendTokensToMultipleAdddresses().
 The administrator is added as a defaultOperator on deployment.
 
 ##### masterContract
-0xb1Fc5675094Bd70859425E418fd247B7dc21472A -
+0x... -
 Set to the company vault. The masterContract can update the administrator address as well as updating the address of the masterContract. Can send tokens to holders using the sendTokensToIndividualAddress() and sendTokensToMultipleAddresses().
 The masterContract can add and remove defaultOperators and is added as a defaultOperator on deployment.
 
