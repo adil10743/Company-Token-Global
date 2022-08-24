@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // This contract was adapted from the ERC777 standard contract and deployed by : Someone on behalf of Company.
 // This following piece of code complements Company TokenGlobal contract. 
-// It specifies the roles as well as the on / off function of the overall token contract.
+// It adds restrictions onto many of the detailed write functions
 
 pragma solidity ^0.8.0;
 
@@ -9,7 +9,6 @@ import "@openzeppelin/contracts/token/ERC777/IERC777.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/Address.sol";
 import "@openzeppelin/contracts/utils/Context.sol";
-import "@openzeppelin/contracts/interfaces/IERC1820Registry.sol";
 import "./coRoles.sol";
 
 /**
@@ -29,8 +28,6 @@ import "./coRoles.sol";
  */
 contract coERC777 is IERC777, IERC20, coRoles {
     using Address for address;
-
-    IERC1820Registry internal constant _ERC1820_REGISTRY = IERC1820Registry(0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24);
 
     mapping(address => uint256) private _balances;
 
@@ -63,10 +60,6 @@ contract coERC777 is IERC777, IERC20, coRoles {
         for (uint256 i = 0; i < defaultOperators_.length; i++) {
             _defaultOperators[defaultOperators_[i]] = true;
         }
-
-        // register interfaces
-        _ERC1820_REGISTRY.setInterfaceImplementer(address(this), keccak256("ERC777Token"), address(this));
-        _ERC1820_REGISTRY.setInterfaceImplementer(address(this), keccak256("ERC20Token"), address(this));
     }
 
     /**
