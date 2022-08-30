@@ -13,6 +13,8 @@ networks:
     verify: False
   rinkeby:
     verify: True
+  goerli:
+    verify: True
   kovan: active
 wallets:
   Company:

@@ -1,4 +1,4 @@
-from brownie import companyToken, network, accounts, config
+from brownie import companyToken
 import brownie
 from scripts.automation_scripts import get_account
 from web3 import Web3

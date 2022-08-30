@@ -1,4 +1,3 @@
-import brownie
 from scripts.deploy import max_fee, priority_fee
 from scripts.automation_scripts import get_account
 
