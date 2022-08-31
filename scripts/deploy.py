@@ -18,6 +18,7 @@ def deployCTKtoken(fromWallet):
         initial_supply,
         defaultOperators,
         {"from": account, "max_fee": max_fee, "priority_fee": priority_fee},
+        publish_source=config["networks"][network.show_active()].get("verify")
 
     )
     # max fee can not be bigger than priority fee and 9 zeros in order to get 1gwei from wei so 1000000000wei = 1gwei
