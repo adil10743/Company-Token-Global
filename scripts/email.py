@@ -1,10 +1,10 @@
 import smtplib
 import os
 
-from_addr = "adil10743@gmail.com" #"adil.anees@synpulse.com"
+from_addr = "" #sender address
 Password = os.getenv("GmailPassword")
 
-to_addr = "adil.anees@synpulse.com"
+to_addr = "" #receiver address
 cc = []
 bcc = []
 to_addrs = [to_addr] + cc + bcc
